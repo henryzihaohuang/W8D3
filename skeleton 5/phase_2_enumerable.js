@@ -18,3 +18,21 @@ Array.prototype.myMap = function(callback) {
 }
 
 
+Array.prototype.myReduce = function(callback, initialValue) {
+  let newArray = this
+
+  if (initialValue === undefined) {
+    initialValue = this[0];
+    newArray = this.slice(1, this.length) ;
+  }
+  let acc = initialValue;
+
+  newArray.myEach(el => acc = (callback(acc, el)) ); 
+  return acc;
+}
+
+// Array.each do |ele|
+//   acc = Proc.call(acc, ele)
+//   return acc
+// end
+
